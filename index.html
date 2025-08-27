@@ -40,23 +40,20 @@ main{ max-width:100%; margin:0; padding:0; }
 }
 
   .masthead{
-  position:relative;background:var(--c4-primary);color:#fff;
-  height:var(--masthead-h);
-  padding:0 1rem 0 0.5in; /* badge inset */
-  display:grid; overflow:hidden;
-  border-bottom:0.375rem solid var(--c4-secondary);
-  width:calc(100% + (var(--page-pad) * 2));
-  margin-left:calc(var(--page-pad) * -1);
-  margin-right:calc(var(--page-pad) * -1);
-  box-sizing:border-box;
-}
+    position:relative;
+    background:var(--c4-primary);
+    color:#fff;
+    width:100vw;
+    margin-left:50%;
+    transform:translateX(-50%);
+  }
 
   /* Pattern underlay */
   .pattern{ position:absolute; inset:0; z-index:0; pointer-events:none; }
   .pattern svg{width:100%; height:100%; display:block;}
 
   /* Foreground content */
-  .content{ position:relative; z-index:2; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center; }
+  .content{ position:relative; z-index:2; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center; padding-top:0.5rem; max-width:1200px; margin:0 auto; padding-left:1rem; padding-right:1rem; }
 
   .mastimg{
     height:calc(100% - (var(--mastimg-pad) * 2));
@@ -82,7 +79,7 @@ main{ max-width:100%; margin:0; padding:0; }
     font-size: clamp(14px, 1.8vw + 6px, 20px);
     text-transform:uppercase;
     letter-spacing:.04em;
-    margin-top:0.375rem;
+    margin-top:0.75rem;
     color:#fff;
   }
 
@@ -157,11 +154,12 @@ main{ max-width:100%; margin:0; padding:0; }
   .team-cell{display:flex;align-items:center;gap:8px;}
   .chip{width:18px;height:18px;border-radius:4px;background:#e5e7eb;display:inline-block;}
   .delta{font-weight:700;} .up{color:#0a7a28;} .down{color:#b00020;} .flat{color:#6b7280;}  
+  .ratings{ table-layout:fixed; width:100%; }
   
   /* RATINGS table tune-up */
 .ratings th,
 .ratings td{
-  padding: 0.375rem 0.375rem;
+  padding: 0.5rem 0.5rem;
   vertical-align: middle;   /* centers content within the cell */
 }
 
@@ -201,16 +199,24 @@ main{ max-width:100%; margin:0; padding:0; }
   .writeup{font-size: clamp(13px, 1.5vw + 1px, 14px); line-height:1.6; color:#111; margin:8px 0 0;}
 
   /* Layout grid: keep sidebar */
-  .grid{ display:grid; grid-template-columns:1fr 26.25rem; gap:1.25rem; margin-top:1.125rem; align-items:start; }
+  .grid{ display:grid; grid-template-columns:minmax(0,70%) minmax(260px,30%); gap:1.25rem; margin-top:1.125rem; align-items:start; }
 
 /* Prominent segment name */
 .segment-title{
   color: var(--c4-primary-dark);
   font: 800 clamp(20px, 2vw + 8px, 24px)/1 "Brush Script MT";
 }
+  
+/* Mobile stack: ratings first, sidebar second */
+@media (max-width: 800px){
+  .grid{
+    grid-template-columns: 1fr;  /* single column */
+    gap: 1rem;                    /* slightly tighter vertical rhythm */
+  }
+}
 
 /* Wordmark sizing knobs */
-:root{ --wordmark-h:1.5rem; --wordmark-max-w:13.75rem; }
+:root{ --wordmark-h:2rem; --wordmark-max-w:13.75rem; }
 .wordmark{ height:var(--wordmark-h); width:auto; max-width:var(--wordmark-max-w); display:block; }
 .team-label{ font-weight:600; line-height:1; }
 @media screen{ .team-label{ display:none; } }
@@ -224,11 +230,12 @@ main{ max-width:100%; margin:0; padding:0; }
   font:700 clamp(11px, 1vw + 1px, 12px)/1 system-ui, sans-serif;
   letter-spacing:.08em; text-transform:uppercase;
   box-shadow:0 0 0 2px rgba(255,255,255,.15) inset;
-  animation: livePulse 2.4s ease-in-out infinite;
+  animation:pulse 1.2s ease-in-out infinite;
 }
-@keyframes livePulse{
-  0%,100%{ box-shadow:0 0 0 2px rgba(255,255,255,.15) inset, 0 0 0 0 rgba(208,2,27,0); }
-  50%   { box-shadow:0 0 0 2px rgba(255,255,255,.15) inset, 0 0 8px 2px rgba(208,2,27,.45); }
+@keyframes pulse{
+  0%   { transform:scale(1);    box-shadow:0 0 0 rgba(255,0,0,0.5); }
+  50%  { transform:scale(1.08); box-shadow:0 0 24px rgba(255,0,0,0.45); }
+  100% { transform:scale(1);    box-shadow:0 0 0 rgba(255,0,0,0.5); }
 }
 
 /* Chyron-style ticker */
@@ -466,6 +473,7 @@ This Sunday, every team arrives with hope, convinced they’ve got the perfect p
 </div>
 </body>
 </html>
+
 
 
 
