@@ -31,8 +31,7 @@
   }
 
   /* Letter-sized preview with adjustable page padding */
-.page{ max-width:1200px; width:100%; margin:0 auto; background:var(--bg); padding:var(--page-pad); box-sizing:border-box; }
-.page{ max-width:1200px; width:100%; margin:0 auto; background:var(--bg); padding:var(--page-pad); box-sizing:border-box; }
+.page{ max-width:1200px; width:100%; margin:0 auto; background:var(--bg); padding: 0 var(--page-pad) var(--page-pad); box-sizing:border-box; }
 main{ max-width:100%; margin:0; padding:0; }
 @media print{
   @page{ size: Letter portrait; margin:0.5in; }
@@ -86,14 +85,14 @@ main{ max-width:100%; margin:0; padding:0; }
 
   /* Additional tapered rules under masthead */
   .mast-rules{
-  width:calc(100% + (var(--page-pad) * 2));
-  margin-left:calc(var(--page-pad) * -1);
-  margin-right:calc(var(--page-pad) * -1);
+  width:100vw;
+  margin-left:50%;
+  transform:translateX(-50%);
   background:transparent;
 }
-  .mast-rules .rule{ background:var(--c4-secondary); height:0.25rem; }
-  .mast-rules .rule.mid{ margin-top:0.3125rem; height:0.1875rem; }
-  .mast-rules .rule.thin{ margin-top:0.3125rem; height:0.0625rem; }
+  .mast-rules .rule{ background:var(--c4-secondary); height:0.32rem; }
+  .mast-rules .rule.mid{ margin-top:0.3125rem; height:0.18rem; }
+  .mast-rules .rule.thin{ margin-top:0.3125rem; height:0.08rem; }
 
   /* Section styling */
   .section{ margin-top:0.625rem; }
@@ -101,6 +100,7 @@ main{ max-width:100%; margin:0; padding:0; }
     position:relative;
     margin:0 0 0.5rem;
     padding-top:0.625rem; /* space above lines */
+    z-index: 0;
   }
   .section-header .lines{
   position:absolute;
@@ -111,6 +111,7 @@ main{ max-width:100%; margin:0; padding:0; }
   transform: none;         /* REMOVE translateY(-50%) to avoid sub‑pixel blur */
   display:grid;
   gap: 4px;                /* you asked for 4px */
+  z-index: -1;
 }
 .section-header .lines span{
   display:block;
@@ -188,7 +189,7 @@ main{ max-width:100%; margin:0; padding:0; }
 .ratings td:nth-child(4){ text-align: center; }
 
   /* Sidebar card */
-  .rail{background:#fff; padding:14px; border:2px solid var(--c4-primary-dark); border-radius:8px;}
+  .rail{background:#fff; padding:14px; border:2px solid var(--c4-primary-dark); border-radius:8px; position:relative; z-index: 1}
   .rail h3.rail-label{
   margin:0 0 6px;
   color: var(--c4-primary-dark);
@@ -475,6 +476,7 @@ This Sunday, every team arrives with hope, convinced they’ve got the perfect p
 </div>
 </body>
 </html>
+
 
 
 
