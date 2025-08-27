@@ -63,7 +63,12 @@ main{ max-width:100%; margin:0; padding:0; }
   }
 
   /* Title block — NO box or stroke */
-  .title-wrap{ padding:0; margin:0; border:none; border-radius:0; background:transparent; }
+ .title-wrap{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items:end;               /* baseline-ish alignment for subtitle & pill */
+  gap: 0.5rem;
+}
   .title{
     font-family: "Compacta","Haettenschweiler","Impact",sans-serif;
     text-transform: uppercase;
@@ -85,17 +90,16 @@ main{ max-width:100%; margin:0; padding:0; }
   }
 
   /* Additional tapered rules under masthead */
- .mast-rules{
+.mast-rules{
   position: relative;
-  margin-left: calc(50% - 50vw);   /* extend to left edge */
-  margin-right: calc(50% - 50vw);  /* extend to right edge */
-  background: transparent;         /* keep background clean */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  /* optional: add a tiny cushion above the first line */
+  /* padding-top: 0.5rem; */
 }
-
-/* keep your existing heights; just ensure full-width blocks */
 .mast-rules .rule{
-  display: block;
-  width: 100%;
+  display:block;
+  width:100%;
   background: var(--c4-secondary);
   margin-top: 0.3125rem;
 }
@@ -232,26 +236,25 @@ main{ max-width:100%; margin:0; padding:0; }
 
 /* LIVE pill */
 .live-bug{
-  justify-self:end; 
-  align-self:end;           /* align with subtitle line */
-  position: relative;
-  top:-6px;                 /* nudge upward; adjust to -8px if you want it tighter */
+  grid-column: 2;                /* right column in .title-wrap */
+  justify-self:end;
+  align-self:end;
 
-  background:#d0021b; 
-  color:#fff;
-  border-radius:999px; 
-  padding:0.375rem 0.75rem;
+  display:inline-block;
+  background:#d0021b; color:#fff;
+  border-radius:999px; padding:0.375rem 0.75rem;
   font:700 clamp(11px, 1vw + 1px, 12px)/1 system-ui, sans-serif;
-  letter-spacing:.08em; 
-  text-transform:uppercase;
+  letter-spacing:.08em; text-transform:uppercase;
   box-shadow:0 0 0 2px rgba(255,255,255,.15) inset;
-  animation: liveGlow 2.6s ease-in-out infinite;  /* was 1.2s pulse */
+
+  transform-origin:50% 80%;
+  animation: livePulse 2.4s ease-in-out infinite;
 }
 
-/* gentle glow only — no transform/scale so it won't dip */
-@keyframes liveGlow{
-  0%,100%{ box-shadow:0 0 0 2px rgba(255,255,255,.15) inset, 0 0 0 rgba(255,0,0,0); }
-  50%    { box-shadow:0 0 0 2px rgba(255,255,255,.15) inset, 0 0 14px rgba(255,0,0,.35); }
+@keyframes livePulse{
+  0%   { transform: translateY(-6px) scale(1.00); box-shadow:0 0 0 2px rgba(255,255,255,.15) inset, 0 0 0 rgba(255,0,0,0); }
+  50%  { transform: translateY(-6px) scale(1.05); box-shadow:0 0 0 2px rgba(255,255,255,.15) inset, 0 0 16px rgba(255,0,0,.40); }
+  100% { transform: translateY(-6px) scale(1.00); box-shadow:0 0 0 2px rgba(255,255,255,.15) inset, 0 0 0 rgba(255,0,0,0); }
 }
   
 /* Chyron-style ticker */
@@ -491,6 +494,7 @@ This Sunday, every team arrives with hope, convinced they’ve got the perfect p
 </div>
 </body>
 </html>
+
 
 
 
