@@ -84,7 +84,7 @@ main{ max-width:100%; margin:0; padding:0; }
   }
 
 /* Full-bleed yellow rules under masthead */
-.mast-rules{
+.masthead-rules{
   position: relative;
   /* center a 100vw strip without transforms (prevents half-pixel rendering) */
   margin-left: calc(50% - 50vw);
@@ -93,14 +93,14 @@ main{ max-width:100%; margin:0; padding:0; }
   z-index: 1;
 }
 
-.mast-rules .rule{
+.masthead-rules .rule{
   display:block;                 /* ensure they render as full-width blocks */
   width:100%;
   background: var(--c4-secondary);
   margin-top: 0.3125rem;
 }
-.mast-rules .rule.mid{  height: 0.1875rem; }   /* ~3px */
-.mast-rules .rule.thin{ height: 0.0625rem; }   /* ~1px */
+.masthead-rules .rule.mid{  height: 0.1875rem; }   /* ~3px */
+.masthead-rules .rule.thin{ height: 0.0625rem; }   /* ~1px */
   
   /* Section styling */
   .section{ margin-top:0.625rem; }
@@ -231,7 +231,7 @@ main{ max-width:100%; margin:0; padding:0; }
 @media print{ :root{ --wordmark-h:2rem; } }
 
 /* LIVE pill (scoped to masthead for specificity) */
-.mast .live{
+.masthead .live{
   display:inline-block;
   background:#f00;
   color:#fff;
@@ -483,6 +483,7 @@ This Sunday, every team arrives with hope, convinced they’ve got the perfect p
 </div>
 </body>
 </html>
+
 
 
 
