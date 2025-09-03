@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AnchorMEN UPDATE — Week 1 2025</title>
+  <style>
+    :root{
+      --c4-primary: rgb(50,48,146);
+      --c4-primary-dark: rgb(35,33,110);
+      --c4-secondary: rgb(254,231,0);
+      --ink:#111; --muted:#6b7280; --bg:#fff;
+      --rail-bg:#f5f7fb; --rule: rgba(17,17,17,.12);
+      --masthead-h:7rem;
+      --mastimg-pad:0.375rem;
+      --page-pad: 0.5in;
+      --wordmark-h:3rem; 
+      --wordmark-max-w:13.75rem;
+    }
+
+    /* Fonts */
+    @font-face{
+      font-family: "Compacta";
+      src: url("fonts/Compacta.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Source Sans";
+      src: url("fonts/SourceSansPro-Regular.ttf.woff2") format("woff2"),
+           url("fonts/SourceSansPro-Regular.ttf.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Source Sans";
+      src: url("fonts/SourceSansPro-Bold.ttf.woff2") format("woff2"),
+           url("fonts/SourceSansPro-Bold.ttf.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    html,body{
+      margin:0; padding:0; background:var(--bg); color:var(--ink);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    }
+
+    /* Page & print */
+    .page{ max-width:1200px; width:100%; margin:0 auto; background:var(--bg); padding: 0 var(--page-pad) var(--page-pad); box-sizing:border-box; }
+    main{ max-width:100%; margin:0; padding:0; }
+    @media print{
+      @page{ size: Letter portrait; margin:0.5in; }
+      body{ background:transparent; }
+      .page{ width:auto; margin:0; padding:0; }
+    }
+
+    /* Masthead */
+    .masthead{
+      position:relative;
+      background:var(--c4-primary);
+      color:#fff;
+      width:100vw;
+      margin-left:50%;
+      transform:translateX(-50%);
+    }
+    .masthead .content{ padding-top:1rem; padding-bottom:1.25rem; }
+
+    /* Pattern underlay */
+    .pattern{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+    .pattern svg{width:100%; height:100%; display:block;}
+
+    /* Foreground content */
+    .content{
+      position:relative; z-index:2; display:grid; grid-template-columns:auto 1fr auto;
+      gap:1rem; align-items:start; padding-top:0.5rem; max-width:1200px; margin:0 auto;
+      padding-left:1rem; padding-right:1rem;
+    }
+    .mastimg{
+      height:calc(100% - (var(--mastimg-pad) * 2));
+      width:auto; display:block; object-fit:contain;
+      padding:var(--mastimg-pad) 0;
+    }
+
+    /* Title block */
+    .title-wrap{ padding:0; margin:0; border:none; border-radius:0; background:transparent; display:flex; flex-direction:column; justify-content:center; }
+    .title{
+      font-family: "Compacta","Haettenschweiler","Impact",sans-serif;
+      text-transform: uppercase; letter-spacing:.02em;
+      font-size: clamp(32px, 4vw + 12px, 46px);
+      line-height:1.05; margin:0; color:#fff;
+      -webkit-text-stroke:1px var(--c4-primary-dark);
+      text-shadow: 0 0 0 var(--c4-primary-dark);
+    }
+    .meta{
+      font-family: "Bernard MT Condensed","League Gothic",Impact,sans-serif;
+      font-size: clamp(24px, 1.8vw + 6px, 20px);
+      text-transform:uppercase; letter-spacing:.1rem;
+      margin-top:0.1rem; color:#fff;
+    }
+
+    /* Tapered rules under masthead */
+    .mast-rules{
+      width:100vw; margin-left:50%; transform:translateX(-50%); background:transparent;
+    }
+    .mast-rules .rule{ background:var(--c4-secondary); height:0.4rem; }
+    .mast-rules .rule.mid{ margin-top:0.3125rem; height:0.2rem; }
+    .mast-rules .rule.thin{ margin-top:0.3125rem; height:0.1rem; }
+
+    /* Section styling */
+    .section{ margin-top:0.625rem; }
+    .section-header{
+      position:relative; margin:0 0 0.5rem; padding-top:0.625rem; z-index: 0;
+    }
+    .section-header .lines{
+      position:absolute;
+      left: calc(var(--page-pad) * -1);
+      right: calc(var(--page-pad) * -1);
+      /* total stripe pack height = 14px */
+      top: calc(50% - 14px);
+      transform: none;
+      display:grid; gap: 4px; z-index: -1;
+    }
+    .section-header .lines span{ display:block; height: 2px; background: var(--c4-secondary); }
+    .section-title{
+      position:relative; z-index:2; display:inline-block; margin:0; padding:0;
+      font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
+      text-transform:uppercase; letter-spacing:.02em;
+      font-size: clamp(20px, 2.2vw + 8px, 26px);
+      color:#fff;
+      -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow: 0 0 0 var(--c4-primary-dark);
+      padding-left:12px; top:-11px;
+    }
+
+    .section .block{ background:transparent; border:none; box-shadow:none; border-radius:0; padding:0; }
+
+    /* Ratings: remove wrapper chrome on first section */
+    .section:first-of-type .block{ background: transparent; border: none; box-shadow: none; border-radius: 0; padding: 0; }
+
+    /* Ratings table (base) */
+    .ratings{ border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; table-layout:fixed; }
+    .ratings tbody tr:hover td{ background:#fafbff; }
+    .team-cell{ display:flex; align-items:center; gap:8px; }
+    .chip{ width:18px; height:18px; border-radius:4px; background:#e5e7eb; display:inline-block; }
+    .delta{ font-weight:700; } .up{color:#0a7a28;} .down{color:#b00020;} .flat{color:#6b7280;}
+
+    /* Base cell padding */
+    .ratings th, .ratings td{ padding: 0.4rem 0.5rem; vertical-align: middle; }
+
+    /* Base header */
+    .ratings thead th{
+      background: #f7f9ff;
+      border-bottom: 0.1875rem solid var(--c4-primary-dark);
+      font-weight: 700;
+      font-size: clamp(12px, 1.2vw + 2px, 13px);
+      color: #2b3345;
+      white-space: normal; line-height: 1.15;
+    }
+
+    /* Base row separators (thin) */
+    .ratings tbody tr + tr td{ border-top: 0.0625rem solid var(--rule); }
+
+    /* Column widths for this Week 1 table */
+    /* Overall Grade (col 1): centered, compact */
+    .ratings th:nth-child(1), .ratings td:nth-child(1){ text-align: center; width: 7rem; }
+    /* Team (col 2): left, roomy for wordmarks */
+    .ratings th:nth-child(2), .ratings td:nth-child(2){ text-align: left; width: 40%; }
+    /* Veronica / Champ / Brian (cols 3–5): centered, compact */
+    .ratings th:nth-child(3), .ratings td:nth-child(3),
+    .ratings th:nth-child(4), .ratings td:nth-child(4),
+    .ratings th:nth-child(5), .ratings td:nth-child(5){ text-align: center; width: 12%; }
+
+    /* Draft Report Card (scoped refinements) */
+    .ratings--tiers{ border-collapse: collapse; border-spacing: 0; }
+
+    /* Header underline (thicker) + wrapping */
+    .ratings--tiers thead th{
+      border-bottom: 3px solid var(--c4-primary-dark);
+      background: #f7f9ff; font-weight:700; color:#2b3345;
+      white-space: normal; word-break: break-word; line-height:1.2; padding: 0.5rem 0.5rem;
+    }
+
+    /* Clean row lines for body */
+    .ratings--tiers{
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* remove per-cell borders */
+    .ratings--tiers tbody tr + tr td{ border-top: 0; }
+
+    /* add one clean border per row */
+    .ratings--tiers tbody tr{ border-top: 2px solid #e6e8ef; }
+    .ratings--tiers tbody tr:first-child {
+      border-top: none;
+    }
+
+    /* keep side borders off so horizontal rules read clean */
+    .ratings--tiers th, .ratings--tiers td{ border-left: 0; border-right: 0; }
+
+    /* Team cell layout & wordmarks */
+    .ratings--tiers .team-cell{ display:flex; align-items:center; gap:8px; overflow-wrap:anywhere; }
+    .wordmark{ height:var(--wordmark-h); width:auto; max-width:var(--wordmark-max-w); display:block; }
+    .ratings--tiers .wordmark{ height: 2.2rem; max-width: 14rem; width:auto; display:block; }
+
+    /* Hide text label next to logo on screen */
+    .team-label{ font-weight:600; line-height:1; }
+    @media screen{ .team-label{ display:none; } }
+    @media print{ :root{ --wordmark-h:3rem; } }
+
+    /* Overall Grade column (headline styling) */
+    .ratings--tiers td:first-child{
+      font-family: "Compacta","Haettenschweiler","Impact",sans-serif;
+      text-transform: uppercase; letter-spacing: .1em;
+      font-size: 1.8rem; font-weight: 700; color:#fff;
+      -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow: 0 0 0 var(--c4-primary-dark);
+    }
+
+    /* Sidebar card */
+    .rail{ background:#fff; padding:14px; border:2px solid var(--c4-primary-dark); border-radius:8px; position:relative; z-index: 1; }
+    .rail h3.rail-label{
+      margin:0 0 6px; color: var(--c4-primary-dark);
+      font: 800 clamp(14px, 1.5vw + 4px, 16px)/1 "Bernard MT Condensed";
+      letter-spacing:.08em;
+    }
+    .muted{ color:#6b7280; font-size: clamp(11px, 1.2vw + 1px, 12px); }
+    .writeup{ font-size: clamp(13px, 1.5vw + 1px, 14px); line-height:1.6; color:#111; margin:8px 0 0; }
+
+    /* Sidebar header: logo + weekly segment name */
+    .rail-header{ display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem; }
+    .rail-logo{ display:block; max-width: 10rem; height:auto; }
+    .rail-header .segment-title{
+      font-family: "Source Sans", Arial, sans-serif;
+      font-weight: 700; font-size: 1.25rem;
+      letter-spacing: .03em; text-transform: uppercase;
+      color: var(--c4-primary);
+    }
+
+    /* Picks list in sidebar */
+    .picks{ display:grid; gap:0.75rem; }                 /* 12px */
+    .pick{ padding:0.625rem 0; }                         /* 10px */
+    .pick + .pick{ border-top:0.0625rem solid var(--rule); } /* 1px */
+
+    /* Header: avatar + “Ron’s Pick” */
+    .pick-header{ display:flex; align-items:center; gap:0.625rem; } /* 10px */
+    .pick-title{
+      font-family:"Source Sans", Arial, sans-serif;
+      font-weight:700; letter-spacing:.03em;
+      font-size:1rem; line-height:1.1;
+      color:var(--c4-primary);
+      text-transform:none;  /* Title Case */
+    }
+
+    /* Body: quote on left, team logo on right */
+    .pick-body{
+      display:flex; align-items:flex-start; gap:0.75rem; /* 12px */
+      margin-top:0.375rem;                               /* 6px */
+    }
+    .pick-body .quote{ flex:1 1 auto; margin:0; }
+
+    /* Universal logo slot — identical box for all marks */
+    .team-slot{
+      flex: 0 0 auto;
+      width: 6rem;   
+      height: 6rem;     
+      display: grid;
+      align-items: center;     /* vertical center */
+      justify-items: end;      /* right align */
+      overflow: visible;       /* don't clip the image; we'll size the img instead */
+      box-sizing: content-box;
+    }
+
+    /* Let the image fit inside the slot without ever cropping */
+    .team-slot .team-logo{
+      height: 100%;      /* match slot height */
+      width: auto;       /* preserve aspect ratio */
+      max-width: 100%;   /* clamp wides so they don't overflow */
+      display: block;
+    }
+
+    /* Narrow rails */
+    @media (max-width: 26.25rem){
+      .team-slot{ width: 8rem; height: 2.75rem; }
+    }
+
+    /* Intro sign-off */
+    .intro{ position: relative; }
+    .signature{
+      position: absolute; bottom: -0.5rem; left: 20%;
+      max-height: 80px; height:auto;
+    }
+
+    /* Layout grid */
+    .grid{ display:grid; grid-template-columns:minmax(0,65%) minmax(260px,35%); gap:1.25rem; margin-top:1.125rem; align-items:start; }
+
+    /* Mobile stack */
+    @media (max-width: 800px){
+      .grid{ grid-template-columns: 1fr; gap: 1rem; }
+      .rail-header{ align-items:flex-start; }
+      .rail-logo{ max-width: 9rem; }
+    }
+
+    /* WEEKLY FORECAST — single column, centered, 2px separators */
+    .ratings--forecast{
+      table-layout: auto;
+      border-collapse: collapse;
+    }
+
+    .ratings--forecast th,
+    .ratings--forecast td{
+      width: auto !important;     /* neutralize widths from other tables */
+      text-align: center;
+    }
+
+    /* 2px row lines */
+    .ratings--forecast tbody tr:first-child td{ border-top: 0; }
+    .ratings--forecast tbody tr + tr td{ border-top: 0.125rem solid #e6e8ef; } /* ~2px */
+
+    /* Center the logos + “vs” as a unit */
+    .ratings--forecast .team-cell{
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* LIVE pill */
+    .live-bug{
+      position:relative; z-index:3; justify-self:end; align-self:start; margin-top:0.2rem;
+      background:#d0021b; color:#fff; border-radius:999px; padding:0.375rem 0.75rem;
+      font:700 clamp(11px, 1vw + 1px, 12px)/1 system-ui, sans-serif; letter-spacing:.08em;
+      text-transform:uppercase; box-shadow:0 0 0 2px rgba(255,255,255,.15) inset;
+      animation:pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%   { transform:scale(1);    box-shadow:0 0 0 rgba(255,0,0,0.5); }
+      50%  { transform:scale(1.08); box-shadow:0 0 24px rgba(255,0,0,0.45); }
+      100% { transform:scale(1);    box-shadow:0 0 0 rgba(255,0,0,0.5); }
+    }
+
+    /* Chyron ticker */
+    .ticker{
+      position: sticky; bottom: 0; left: 0; right: 0; height: 2rem;
+      background: var(--c4-primary-dark); color: #fff; border-top: 0.1875rem solid var(--c4-secondary);
+      overflow: hidden; display: grid; align-items: center;
+      font: 600 clamp(11px, 0.9vw + 1px, 12px)/1.1 system-ui, sans-serif; z-index: 100;
+    }
+    .ticker-inner{ display:flex; width:max-content; will-change: transform; animation: ticker 28s linear infinite; }
+    .ticker-track{ display:flex; white-space: nowrap; flex: 0 0 auto; min-width: 100vw; }
+    .ticker-track span{ display:inline-block; padding: 0 1.5rem; letter-spacing: .02em; text-transform: uppercase; }
+    @keyframes ticker{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+    .is-archived .ticker{ display:none; }
+    @media print{ .ticker{ display:none; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="masthead">
+      <!-- Underlay pattern -->
+      <div class="pattern" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="c4tile" width="56" height="56" patternUnits="userSpaceOnUse">
+              <g transform="rotate(-18 28 28)">
+                <image href="images/channel-4-pattern.svg" x="14" y="14" width="28" height="28"/>
+              </g>
+            </pattern>
+            <pattern id="c4tileOffset" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="translate(28,28)">
+              <g transform="rotate(-18 28 28)">
+                <image href="images/channel-4-pattern.svg" x="14" y="14" width="28" height="28"/>
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#c4tile)" opacity="0.06"/>
+          <rect width="100%" height="100%" fill="url(#c4tileOffset)" opacity="0.06"/>
+        </svg>
+      </div>
+
+      <!-- Foreground content -->
+      <div class="content">
+        <img class="mastimg" src="images/channel-4-badge.svg" alt="Channel 4 badge" />
+        <div class="title-wrap">
+          <h1 class="title">AnchorMEN UPDATE</h1>
+          <div class="meta">Week 1 2025</div>
+        </div>
+        <div class="live-bug" aria-label="Live">LIVE</div>
+      </div>
+    </div>
+
+    <!-- Tapered rules -->
+    <div class="mast-rules">
+      <div class="rule"></div>
+      <div class="rule mid"></div>
+      <div class="rule thin"></div>
+    </div>
+
+    <!-- Intro -->
+    <section class="intro" style="padding:0.875rem 0.5in 4.5rem 0.5in;">
+      <p class="writeup">
+        Ah, Week 1 — that magical time when hope springs eternal, and everyone struts into the arena convinced their roster is a work of art. The draft table was a carnival of confidence: some managers leaned on safe, steady hands while others went chasing fireworks, and a few may have drafted with the same grace as a man tripping over a teleprompter. You could feel the tension, the side-eye glances, the whispered curses when a coveted name was plucked a pick too soon. That’s the beauty of it, folks — chaos disguised as strategy, and somehow it all adds up to a season’s worth of bragging rights.<br><br>
+        Now the real games begin, and with them come the storylines that will fuel every argument and barroom boast from here until December. Will those risky picks blossom into legends or implode faster than a glass of scotch at last call? Will the so-called “genius” late-round steals look savvy or sad when the points start rolling in? One thing’s for certain: by the end of Week 1, the standings will already tell tales of hubris, heartbreak, and heroics. Stay tuned, stay cocky, and most importantly… stay classy.
+      </p>
+      <img src="images/ron-signature.svg" alt="Ron Burgundy signature" class="signature" />
+    </section>
+
+    <main>
+      <div class="grid">
+        <!-- Draft Report Card -->
+        <section class="section">
+          <div class="section-header">
+            <div class="lines"><span></span><span></span><span></span></div>
+            <h2 class="section-title">DRAFT REPORT CARD</h2>
+          </div>
+
+          <div class="block">
+            <table class="ratings ratings--tiers" aria-label="Pre-draft tiers">
+              <thead>
+                <tr>
+                  <th>Overall Grade</th>
+                  <th>Team</th>
+                  <th>Veronica's Grade</th>
+                  <th>Champ's Grade</th>
+                  <th>Brian's Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A-</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/james-westfall.svg" alt="James Westfall">
+                    <span class="team-label">James Westfall</span>
+                  </td>
+                  <td>A</td><td>B+</td><td>A-</td>
+                </tr>
+                <tr>
+                  <td>B+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/metal-and-brawn.svg" alt="Metal &amp; Brawn">
+                    <span class="team-label">Metal &amp; Brawn</span>
+                  </td>
+                  <td>A-</td><td>B+</td><td>B-</td>
+                </tr>
+                <tr>
+                  <td>B+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/tits-mcgee.svg" alt="Tits McGee">
+                    <span class="team-label">Tits McGee</span>
+                  </td>
+                  <td>B+</td><td>A+</td><td>C+</td>
+                </tr>
+                <tr>
+                  <td>B-</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/blackbeards-delight.svg" alt="Blackbeard’s Delight">
+                    <span class="team-label">Blackbeard’s Delight</span>
+                  </td>
+                  <td>B</td><td>C</td><td>B+</td>
+                </tr>
+                <tr>
+                  <td>C+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/katow-jo.svg" alt="Katow-Jo">
+                    <span class="team-label">Katow-Jo</span>
+                  </td>
+                  <td>B-</td><td>B+</td><td>D</td>
+                </tr>
+                <tr>
+                  <td>C+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/panda-watch.svg" alt="Panda Watch">
+                    <span class="team-label">Panda Watch</span>
+                  </td>
+                  <td>C-</td><td>D</td><td>A</td>
+                </tr>
+                <tr>
+                  <td>C+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/poop-mouth.svg" alt="Poop Mouth">
+                    <span class="team-label">Poop Mouth</span>
+                  </td>
+                  <td>C+</td><td>C</td><td>B</td>
+                </tr>
+                <tr>
+                  <td>C+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/ubulus-muscle.svg" alt="Ubulus Muscle">
+                    <span class="team-label">Ubulus Muscle</span>
+                  </td>
+                  <td>D</td><td>A+</td><td>C-</td>
+                </tr>
+                <tr>
+                  <td>D+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/an-old-old-wooden-ship.svg" alt="An Old, Old Wooden Ship">
+                    <span class="team-label">An Old, Old Wooden Ship</span>
+                  </td>
+                  <td>C</td><td>C</td><td>F</td>
+                </tr>
+                <tr>
+                  <td>D+</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/totally-unprepared.svg" alt="Totally Unprepared">
+                    <span class="team-label">Totally Unprepared</span>
+                  </td>
+                  <td>F</td><td>C</td><td>C</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="writeup grades-note">
+Here we are, grading the draft like only the Channel 4 News Team can. This year we've come up with an airtight grading system, enlisting the help of some of the brilliant minds behind the news desk. Veronica went straight to the numbers, crunching stats and projections with the precision of a newsroom protractor. Champ chased the fireworks, handing out praise to rosters that promise big plays and booming scores. And Brian? He poked around in the late rounds, hunting for steals and sleepers like a man sniffing out a good deal on cologne. Together, their scores paint a picture of who nailed the draft… and who might already be on thin ice.
+            </p>
+          </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="rail">
+          <div class="rail-header">
+            <img src="images/c4-exclusive.svg" alt="C4 Exclusive" class="rail-logo">
+            <div class="segment-title">Bold Picks from the News Team</div>
+          </div>
+          <p class="writeup">
+            <i>Our Anchors call their shot for the 2025 crown.</i><br><br>
+
+    <div class="picks">
+
+      <div class="pick">
+        <div class="pick-header">
+          <div class="pick-title">Ron’s Pick</div>
+        </div>
+        <div class="pick-body">
+          <p class="writeup quote">“Metal and Brawn has already proven they can win the big one — three times, in fact. Toss in studs like Gibbs, Tyreek, and Hurts, and you’ve got a roster with the class and pedigree of a fine scotch. And let me tell you, I only endorse winners.”</p>
+          <div class="team-slot">
+            <img class="team-logo" src="logos/metal-and-brawn.svg" alt="Metal &amp; Brawn logo" onerror="this.remove()" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pick">
+        <div class="pick-header">
+          <div class="pick-title">Veronica’s Pick</div>
+        </div>
+        <div class="pick-body">
+          <p class="writeup quote">“The projections favor James Westfall, and the numbers are clear. Their roster is stacked with projected top performers and a history of steady playoff appearances. I’ll take cold, hard consistency over nostalgia every time.”</p>
+          <div class="team-slot">
+            <img class="team-logo" src="logos/james-westfall.svg" alt="James Westfall logo" onerror="this.remove()" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pick">
+        <div class="pick-header">
+          <div class="pick-title">Champ’s Pick</div>
+        </div>
+        <div class="pick-body">
+          <p class="writeup quote">“WHAMMY! Ubulus Muscle has Jeanty, Worthy, and Lamar ready to light up the highlight reel. They may not have the history, but every week this roster looks like a fireworks show waiting to happen.”</p>
+          <div class="team-slot">
+            <img class="team-logo" src="logos/ubulus-muscle.svg" alt="Ubulus Muscle logo" onerror="this.remove()" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pick">
+        <div class="pick-header">
+          <div class="pick-title">Brick’s Pick</div>
+        </div>
+        <div class="pick-body">
+          <p class="writeup quote">“The Colorado Avalanche are real contenders this year. They score a lot, the ice is very slippery, and their mascot is a giant dog. That makes sense to me.”</p>
+          <div class="team-slot">
+            <img class="team-logo" src="logos/avalanche.svg" alt="Colorado Avalanche logo" onerror="this.remove()" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pick">
+        <div class="pick-header">
+          <div class="pick-title">Brian’s Pick</div>
+        </div>
+        <div class="pick-body">
+          <p class="writeup quote">“Tits McGee reeks of the scent of an underdog. Jefferson and Flowers give them the star power, and Hampton was a sneaky value. They’ve never won before, but this might just be the year.”</p>
+          <div class="team-slot">
+            <img class="team-logo" src="logos/tits-mcgee.svg" alt="Tits McGee logo" onerror="this.remove()" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+          </p>
+        </aside>
+      </div>
+
+      <!-- Weekly Forecast -->
+      <section class="section" id="weekly-forecast">
+        <div class="section-header">
+          <div class="lines"><span></span><span></span><span></span></div>
+          <h2 class="section-title">WEEKLY FORECAST</h2>
+        </div>
+
+        <div class="grid">
+          <!-- LEFT: matchups table -->
+          <section class="section">
+            <div class="block">
+              <table class="ratings ratings--forecast" aria-label="Weekly Forecast">
+                <tbody>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/metal-and-brawn.svg" alt="Metal &amp; Brawn">
+                      <span class="team-label">Metal &amp; Brawn</span>
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/james-westfall.svg" alt="James Westfall">
+                      <span class="team-label">James Westfall</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/panda-watch.svg" alt="Panda Watch">
+                      <span class="team-label">Panda Watch</span>
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/totally-unprepared.svg" alt="Totally Unprepared">
+                      <span class="team-label">Totally Unprepared</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/poop-mouth.svg" alt="Poop Mouth">
+                      <span class="team-label">Poop Mouth</span>
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/blackbeards-delight.svg" alt="Blackbeard’s Delight">
+                      <span class="team-label">Blackbeard’s Delight</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/katow-jo.svg" alt="Katow-Jo">
+                      <span class="team-label">Katow-Jo</span>
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/tits-mcgee.svg" alt="Tits McGee">
+                      <span class="team-label">Tits McGee</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/an-old-old-wooden-ship.svg" alt="An Old, Old Wooden Ship">
+                      <span class="team-label">An Old, Old Wooden Ship</span>
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/ubulus-muscle.svg" alt="Ubulus Muscle">
+                      <span class="team-label">Ubulus Muscle</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- RIGHT: matchup of the week -->
+          <aside class="rail">
+            <h3 class="rail-label">Matchup of the Week</h3>
+            <p class="muted" style="margin:0.25rem 0 0;">Coming soon.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Ticker -->
+  <div class="ticker" aria-label="News ticker">
+    <div class="ticker-inner">
+      <div class="ticker-track">
+        <span>TOILET STORE CLOSED AFTER TOTALLY UNPREPARED BUYS OUT INVENTORY</span>
+        <span>LEAGUE FEES DUE BEFORE WEEK 3</span>
+        <span>LEAGUE-WINNER NIX FALLS TO 8TH ROUND</span>
+        <span>REPORT: BLACKBEARD'S DELIGHT OWNER 'JUST THROWING DARTS' IN DRAFT ROOM</span>
+        <span>THE DISRESPECT CONTINUES: SANDERS FALLS TO 15TH</span>
+        <span>UBULUS MUSCLE STARTS D/ST RUN; DOESN'T EVEN TAKE TOP OPTION</span>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="ticker-track" aria-hidden="true">
+        <span>TOILET STORE CLOSED AFTER TOTALLY UNPREPARED BUYS OUT INVENTORY</span>
+        <span>NOBODY BETS ON PITTS BREAKOUT</span>
+        <span>LEAGUE-WINNER NIX FALLS TO 8TH ROUND</span>
+        <span>REPORT: BLACKBEARD'S DELIGHT OWNER 'JUST THROWING DARTS' IN DRAFT ROOM</span>
+        <span>THE DISRESPECT CONTINUES: SANDERS FALLS TO 15TH</span>
+        <span>UBULUS MUSCLE STARTS D/ST RUN; DOESN'T EVEN TAKE TOP OPTION</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
