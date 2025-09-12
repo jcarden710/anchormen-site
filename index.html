@@ -5,399 +5,313 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AnchorMEN UPDATE — Week 1 2025</title>
   <style>
-    :root{
-      --c4-primary: rgb(50,48,146);
-      --c4-primary-dark: rgb(35,33,110);
-      --c4-secondary: rgb(254,231,0);
-      --ink:#111; --muted:#6b7280; --bg:#fff;
-      --rail-bg:#f5f7fb; --rule: rgba(17,17,17,.12);
-      --masthead-h:7rem;
-      --mastimg-pad:0.375rem;
-      --page-pad: 0.5in;
-      --wordmark-h:3rem; 
-      --wordmark-max-w:13.75rem;
-    }
+  :root{
+    --c4-primary: rgb(50,48,146);
+    --c4-primary-dark: rgb(35,33,110);
+    --c4-secondary: rgb(254,231,0);
+    --ink:#111; --muted:#6b7280; --bg:#fff;
+    --rail-bg:#f5f7fb; --rule: rgba(17,17,17,.12);
+    --masthead-h:7rem;
+    --mastimg-pad:0.375rem;
+    --page-pad: 0.5in;
+    --wordmark-h:3rem; 
+    --wordmark-max-w:13.75rem;
+  }
 
-    /* Fonts */
-    @font-face{
-      font-family: "Compacta";
-      src: url("fonts/Compacta.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Source Sans";
-      src: url("fonts/SourceSansPro-Regular.ttf.woff2") format("woff2"),
-url("fonts/SourceSansPro-Regular.ttf.woff") format("woff");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Source Sans";
-      src: url("fonts/SourceSansPro-Bold.ttf.woff2") format("woff2"),
-url("fonts/SourceSansPro-Bold.ttf.woff") format("woff");
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
+  /* Fonts */
+  @font-face{
+    font-family:"Compacta";
+    src:url("fonts/Compacta.woff2") format("woff2"),
+        url("fonts/Compacta.woff") format("woff");
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:"Source Sans";
+    src:url("fonts/SourceSansPro-Regular.ttf.woff2") format("woff2"),
+        url("fonts/SourceSansPro-Regular.ttf.woff") format("woff");
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:"Source Sans";
+    src:url("fonts/SourceSansPro-Bold.ttf.woff2") format("woff2"),
+        url("fonts/SourceSansPro-Bold.ttf.woff") format("woff");
+    font-weight:700; font-style:normal; font-display:swap;
+  }
 
-    html,body{
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    }
+  html,body{
+    margin:0; padding:0;
+    background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  }
 
-    /* Page & print */
-    .page{ max-width:1200px; width:100%; margin:0 auto; background:var(--bg); padding: 0 var(--page-pad) var(--page-pad); box-sizing:border-box; }
-    main{ max-width:100%; margin:0; padding:0; }
-    @media print{
-      @page{ size: Letter portrait; margin:0.5in; }
-      body{ background:transparent; }
-      .page{ width:auto; margin:0; padding:0; }
-    }
+  /* Page & print */
+  .page{ max-width:1200px; width:100%; margin:0 auto; background:var(--bg); padding:0 var(--page-pad) var(--page-pad); box-sizing:border-box; }
+  main{ max-width:100%; margin:0; padding:0; }
+  @media print{
+    @page{ size:Letter portrait; margin:0.5in; }
+    body{ background:transparent; }
+    .page{ width:auto; margin:0; padding:0; }
+  }
+
+  /* Masthead */
+  .masthead{
+    position:relative; background:var(--c4-primary); color:#fff;
+    width:100vw; margin-left:50%; transform:translateX(-50%);
+  }
+  .masthead .content{ padding-top:1rem; padding-bottom:1.25rem; }
+
+  /* Pattern underlay */
+  .pattern{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+  .pattern svg{ width:100%; height:100%; display:block; }
+
+  /* Foreground content */
+  .content{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:auto 1fr auto;
+    gap:1rem; align-items:start;
+    padding-top:0.5rem; max-width:1200px; margin:0 auto;
+    padding-left:1rem; padding-right:1rem;
+  }
+  .mastimg{
+    height:calc(100% - (var(--mastimg-pad) * 2));
+    width:auto; display:block; object-fit:contain;
+    padding:var(--mastimg-pad) 0;
+  }
+
+  /* Title block */
+  .title-wrap{ padding:0; margin:0; border:0; border-radius:0; background:transparent; display:flex; flex-direction:column; justify-content:center; }
+  .title{
+    font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
+    font-weight:700;
+    text-transform:uppercase; letter-spacing:.02em;
+    font-size:clamp(32px, 4vw + 12px, 46px);
+    line-height:1.05; margin:0; color:#fff;
+    -webkit-text-stroke:1px var(--c4-primary-dark);
+    text-shadow:0 0 0 var(--c4-primary-dark);
+  }
+  .meta{
+    font-family:"Bernard MT Condensed","League Gothic",Impact,sans-serif;
+    font-size:clamp(24px, 1.8vw + 6px, 20px);
+    text-transform:uppercase; letter-spacing:.1rem;
+    margin-top:0.1rem; color:#fff;
+  }
+
+  /* Tapered rules under masthead */
+  .mast-rules{ width:100vw; margin-left:50%; transform:translateX(-50%); background:transparent; }
+  .mast-rules .rule{ background:var(--c4-secondary); height:0.4rem; }
+  .mast-rules .rule.mid{ margin-top:0.3125rem; height:0.2rem; }
+  .mast-rules .rule.thin{ margin-top:0.3125rem; height:0.1rem; }
+
+  /* Sections */
+  .section{ margin-top:0.625rem; }
+  .section-header{ position:relative; margin:0 0 0.5rem; padding-top:0.625rem; z-index:0; }
+  .section-header .lines{
+    position:absolute;
+    left:calc(var(--page-pad) * -1); right:calc(var(--page-pad) * -1);
+    top:calc(50% - 14px);
+    display:grid; gap:4px; z-index:-1;
+  }
+  .section-header .lines span{ display:block; height:2px; background:var(--c4-secondary); }
+  .section-title{
+    position:relative; z-index:2; display:inline-block; margin:0; padding:0 0 0 12px;
+    font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
+    font-weight:700;
+    text-transform:uppercase; letter-spacing:.02em;
+    font-size:clamp(20px, 2.2vw + 8px, 26px);
+    color:#fff; top:-11px;
+    -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow:0 0 0 var(--c4-primary-dark);
+  }
+  .section .block{ background:transparent; border:0; box-shadow:none; border-radius:0; padding:0; }
+
+  /* Ratings (base) */
+  .ratings{ border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; table-layout:fixed; }
+  .ratings th, .ratings td{ padding:0.4rem 0.5rem; vertical-align:middle; }
+  .ratings tbody tr:hover td{ background:#fafbff; }
+  .ratings thead th{
+    background:#f7f9ff;
+    border-bottom:0.1875rem solid var(--c4-primary-dark);
+    font-weight:700; font-size:clamp(12px, 1.2vw + 2px, 13px);
+    color:#2b3345; white-space:normal; line-height:1.15;
+  }
+  /* Column widths for Week table */
+  .ratings th:nth-child(1), .ratings td:nth-child(1){ text-align:center; width:7.5%; }
+  .ratings th:nth-child(2), .ratings td:nth-child(2){ text-align:left; width:40%; }
+  .ratings th:nth-child(3), .ratings td:nth-child(3),
+  .ratings th:nth-child(4), .ratings td:nth-child(4),
+  .ratings th:nth-child(5), .ratings td:nth-child(5){ text-align:center; width:12%; }
+  /* Thin row separators */
+  .ratings tbody tr + tr td{ border-top:0.0625rem solid var(--rule); }
+
+  /* Draft Report Card (tiers) */
+  .ratings--tiers{ border-collapse:collapse; border-spacing:0; }
+  .ratings--tiers thead th{
+    border-bottom:3px solid var(--c4-primary-dark);
+    background:#f7f9ff; font-weight:700; color:#2b3345;
+    white-space:normal; word-break:break-word; line-height:1.2; padding:0.5rem 0.5rem;
+  }
+  .ratings--tiers tbody tr + tr td{ border-top:0; }
+  .ratings--tiers tbody tr{ border-top:2px solid #e6e8ef; }
+  .ratings--tiers tbody tr:first-child{ border-top:none; }
+  .ratings--tiers th, .ratings--tiers td{ border-left:0; border-right:0; }
+  .ratings--tiers .team-cell{ display:flex; align-items:center; gap:8px; overflow-wrap:anywhere; }
+  .wordmark{ height:var(--wordmark-h); width:auto; max-width:var(--wordmark-max-w); display:block; }
+  .ratings--tiers .wordmark{ height:2.2rem; max-width:14rem; width:auto; display:block; }
+  .team-label{ font-weight:600; line-height:1; }
+  @media screen{ .team-label{ display:none; } }
+  @media print{ :root{ --wordmark-h:3rem; } }
+  .ratings--tiers td:first-child{
+    font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
+    font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em;
+    font-size:1.8rem; color:#fff;
+    -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow:0 0 0 var(--c4-primary-dark);
+  }
+
+  /* Sidebar card */
+  .rail{
+    background:#fff; padding:14px; border:2px solid var(--c4-primary-dark);
+    border-radius:8px; position:relative; z-index:1; font-size:medium;
+  }
+  .rail h3.rail-label{
+    margin:0 0 6px; color:var(--c4-primary-dark);
+    font:800 clamp(14px, 1.5vw + 4px, 16px)/1 "Bernard MT Condensed";
+    letter-spacing:.08em;
+  }
+  .muted{ color:#6b7280; font-size:clamp(11px, 1.2vw + 1px, 12px); }
+  .writeup{ font-size:clamp(13px, 1.5vw + 1px, 14px); line-height:1.6; color:#111; margin:8px 0 0; }
+
+  /* Sidebar header */
+  .rail-header{ display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem; }
+  .rail-title{ display:flex; flex-direction:column; justify-content:center; line-height:1.1; }
+  .segment-subtitle{
+    font-family:"Source Sans", Arial, sans-serif;
+    font-weight:700; margin-top:0.125rem; color:var(--c4-primary); font-style:normal;
+  }
+  .rail-logo{ display:block; max-width:10rem; height:auto; }
+  .rail-header .segment-title{
+    font-family:"Source Sans", Arial, sans-serif; font-weight:bolder;
+    font-size:1.33rem; letter-spacing:0; text-transform:uppercase; color:var(--c4-primary);
+    vertical-align:middle;
+  }
+
+  /* Sidebar: logo slot (fix wrapping + breathing room) */
+  .rail-body{ display:flow-root; } /* contain float */
+  .team-slot{ flex:0 0 auto; width:6rem; display:grid; justify-items:end; box-sizing:content-box; }
+  .team-slot .team-logo{ height:100%; width:auto; max-width:100%; display:block; }
+  .team-slot--square{
+    float:right; width:6rem; height:6rem;
+    display:block; /* simpler, more reliable float box */
+    /* extra breathing room for the paragraph to wrap */
+    margin:0 1rem 1rem 1.25rem; /* top right bottom left */
+  }
+  .team-slot--square .team-logo{ width:100%; height:100%; object-fit:contain; display:block; }
+
+  /* Intro sign-off */
+  .intro{ position:relative; }
+  .signature{
+    position:absolute; right:10%; top:17rem;
+    bottom:-0.5rem; max-height:80px; height:auto;
+  }
+
+  /* Layout grid */
+  .grid{ display:grid; grid-template-columns:minmax(0,65%) minmax(260px,35%); gap:1.25rem; margin-top:1.125rem; align-items:start; }
+  @media (max-width:800px){
+    .grid{ grid-template-columns:1fr; gap:1rem; }
+    .rail-header{ align-items:flex-start; }
+    .rail-logo{ max-width:9rem; }
+  }
+  .grid--forecast{ grid-template-columns:minmax(0,1fr) 320px; align-items:start; }
+  @media (max-width:800px){ .grid--forecast{ grid-template-columns:1fr; } }
+
+  /* WEEKLY FORECAST — single column, centered, 2px separators */
+  .ratings--forecast{ table-layout:auto; border-collapse:collapse; }
+  .ratings--forecast th, .ratings--forecast td{ width:auto !important; text-align:center; white-space:nowrap; }
+  .ratings--forecast tbody tr:first-child td{ border-top:0; }
+  .ratings--forecast tbody tr + tr td{ border-top:0.125rem solid #e6e8ef; }
+  .ratings--forecast .team-cell{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:0.5rem; }
+  .ratings--forecast .team-cell img:first-of-type{ justify-self:end; } 
+  .ratings--forecast .team-cell img:last-of-type{  justify-self:start; }
+  /* desktop/tablet: bigger wordmarks (more space available) */
+  .ratings--forecast .wordmark{ height:2.8rem; max-width:16rem; }
+
+  /* LIVE pill */
+  .live-bug{
+    position:relative; z-index:3; justify-self:end; align-self:start; margin-top:0.2rem;
+    background:#d0021b; color:#fff; border-radius:999px; padding:0.375rem 0.75rem;
+    font:700 clamp(11px, 1vw + 1px, 12px)/1 system-ui, sans-serif; letter-spacing:.08em; text-transform:uppercase;
+    box-shadow:0 0 0 2px rgba(255,255,255,.15) inset; animation:pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%{ transform:scale(1); box-shadow:0 0 0 rgba(255,0,0,0.5); }
+    50%{ transform:scale(1.08); box-shadow:0 0 24px rgba(255,0,0,0.45); }
+    100%{ transform:scale(1); box-shadow:0 0 0 rgba(255,0,0,0.5); }
+  }
+
+  /* Chyron ticker */
+  .ticker{
+    position:sticky; bottom:0; left:0; right:0; height:2rem;
+    background:var(--c4-primary-dark); color:#fff; border-top:0.1875rem solid var(--c4-secondary);
+    overflow:hidden; display:grid; align-items:center;
+    font:600 clamp(11px, 0.9vw + 1px, 12px)/1.1 system-ui, sans-serif; z-index:100;
+  }
+  .ticker-inner{ display:flex; width:max-content; will-change:transform; animation:ticker 28s linear infinite; }
+  .ticker-track{ display:flex; white-space:nowrap; flex:0 0 auto; min-width:100vw; }
+  .ticker-track span{ display:inline-block; padding:0 1.5rem; letter-spacing:.02em; text-transform:uppercase; }
+  @keyframes ticker{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .is-archived .ticker{ display:none; }
+  @media print{ .ticker{ display:none; } }
+
+  /* MOBILE CONSOLIDATED (≤600px) */
+  @media (max-width:600px){
+    :root{ --page-pad:0.75rem; }
 
     /* Masthead */
-    .masthead{
-      position:relative;
-      background:var(--c4-primary);
-      color:#fff;
-      width:100vw;
-      margin-left:50%;
-      transform:translateX(-50%);
-    }
-    .masthead .content{ padding-top:1rem; padding-bottom:1.25rem; }
-
-    /* Pattern underlay */
-    .pattern{ position:absolute; inset:0; z-index:0; pointer-events:none; }
-    .pattern svg{width:100%; height:100%; display:block;}
-
-    /* Foreground content */
     .content{
-      position:relative; z-index:2; display:grid; grid-template-columns:auto 1fr auto;
-      gap:1rem; align-items:start; padding-top:0.5rem; max-width:1200px; margin:0 auto;
-      padding-left:1rem; padding-right:1rem;
+      grid-template-columns:auto 1fr;
+      gap:0.5rem; align-items:center;
+      padding-left:0.75rem; padding-right:0.75rem;
     }
-    .mastimg{
-      height:calc(100% - (var(--mastimg-pad) * 2));
-      width:auto; display:block; object-fit:contain;
-      padding:var(--mastimg-pad) 0;
-    }
+    .mastimg{ height:40px; }
+    .title{ font-size:clamp(22px, 6.2vw, 30px); }
+    .meta{ font-size:clamp(14px, 3.6vw, 16px); letter-spacing:0.06rem; }
+    .live-bug{ grid-column:2; justify-self:end; margin-top:0; }
 
-    /* Title block */
-    .title-wrap{ padding:0; margin:0; border:none; border-radius:0; background:transparent; display:flex; flex-direction:column; justify-content:center; }
-    .title{
-      font-family: "Compacta","Haettenschweiler","Impact",sans-serif;
-      text-transform: uppercase; letter-spacing:.02em;
-      font-size: clamp(32px, 4vw + 12px, 46px);
-      line-height:1.05; margin:0; color:#fff;
-      -webkit-text-stroke:1px var(--c4-primary-dark);
-      text-shadow: 0 0 0 var(--c4-primary-dark);
-    }
-    .meta{
-      font-family: "Bernard MT Condensed","League Gothic",Impact,sans-serif;
-      font-size: clamp(24px, 1.8vw + 6px, 20px);
-      text-transform:uppercase; letter-spacing:.1rem;
-      margin-top:0.1rem; color:#fff;
-    }
-
-    /* Tapered rules under masthead */
-    .mast-rules{
-      width:100vw; margin-left:50%; transform:translateX(-50%); background:transparent;
-    }
-    .mast-rules .rule{ background:var(--c4-secondary); height:0.4rem; }
-    .mast-rules .rule.mid{ margin-top:0.3125rem; height:0.2rem; }
-    .mast-rules .rule.thin{ margin-top:0.3125rem; height:0.1rem; }
-
-    /* Section styling */
-    .section{ margin-top:0.625rem; }
-    .section-header{
-      position:relative; margin:0 0 0.5rem; padding-top:0.625rem; z-index: 0;
-    }
-    .section-header .lines{
-      position:absolute;
-      left: calc(var(--page-pad) * -1);
-      right: calc(var(--page-pad) * -1);
-      /* total stripe pack height = 14px */
-      top: calc(50% - 14px);
-      transform: none;
-      display:grid; gap: 4px; z-index: -1;
-    }
-    .section-header .lines span{ display:block; height: 2px; background: var(--c4-secondary); }
-    .section-title{
-      position:relative; z-index:2; display:inline-block; margin:0; padding:0;
-      font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
-      text-transform:uppercase; letter-spacing:.02em;
-      font-size: clamp(20px, 2.2vw + 8px, 26px);
-      color:#fff;
-      -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow: 0 0 0 var(--c4-primary-dark);
-      padding-left:12px; top:-11px;
-    }
-
-    .section .block{ background:transparent; border:none; box-shadow:none; border-radius:0; padding:0; }
-
-    /* Column widths for this Week 1 table */
-    /* Overall Grade (col 1): centered, compact */
-    .ratings th:nth-child(1), .ratings td:nth-child(1){
-	text-align: center;
-	width: 7.5%;
-}
-
-    /* Ratings: remove wrapper chrome on first section */
-    .section:first-of-type .block{ background: transparent; border: none; box-shadow: none; border-radius: 0; padding: 0; }
-
-    /* Ratings table (base) */
-    .ratings{ border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; table-layout:fixed; }
-    .ratings tbody tr:hover td{ background:#fafbff; }
-    .team-cell{ display:flex; align-items:center; gap:8px; }
-    .chip{ width:18px; height:18px; border-radius:4px; background:#e5e7eb; display:inline-block; }
-    .delta{ font-weight:700; } .up{color:#0a7a28;} .down{color:#b00020;} .flat{color:#6b7280;}
-
-    /* Base cell padding */
-    .ratings th, .ratings td{ padding: 0.4rem 0.5rem; vertical-align: middle; }
-
-    /* Base header */
-    .ratings thead th{
-      background: #f7f9ff;
-      border-bottom: 0.1875rem solid var(--c4-primary-dark);
-      font-weight: 700;
-      font-size: clamp(12px, 1.2vw + 2px, 13px);
-      color: #2b3345;
-      white-space: normal; line-height: 1.15;
-    }
-
-    /* Base row separators (thin) */
-    .ratings tbody tr + tr td{ border-top: 0.0625rem solid var(--rule); }
-	  
-    /* Team (col 2): left, roomy for wordmarks */
-    .ratings th:nth-child(2), .ratings td:nth-child(2){ text-align: left; width: 40%; }
-    /* Veronica / Champ / Brian (cols 3–5): centered, compact */
-    .ratings th:nth-child(3), .ratings td:nth-child(3),
-    .ratings th:nth-child(4), .ratings td:nth-child(4),
-    .ratings th:nth-child(5), .ratings td:nth-child(5){ text-align: center; width: 12%; }
-
-    /* Header underline (thicker) + wrapping */
-    .ratings--tiers thead th{
-      border-bottom: 3px solid var(--c4-primary-dark);
-      background: #f7f9ff; font-weight:700; color:#2b3345;
-      white-space: normal; word-break: break-word; line-height:1.2; padding: 0.5rem 0.5rem;
-    }
-
-    /* Clean row lines for body */
-    .ratings--tiers{
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
-
-    /* remove per-cell borders */
-    .ratings--tiers tbody tr + tr td{ border-top: 0; }
-
-    /* add one clean border per row */
-    .ratings--tiers tbody tr{ border-top: 2px solid #e6e8ef; }
-    .ratings--tiers tbody tr:first-child {
-      border-top: none;
-    }
-
-    /* keep side borders off so horizontal rules read clean */
-    .ratings--tiers th, .ratings--tiers td{ border-left: 0; border-right: 0; }
-
-    /* Team cell layout & wordmarks */
-    .ratings--tiers .team-cell{ display:flex; align-items:center; gap:8px; overflow-wrap:anywhere; }
-    .wordmark{ height:var(--wordmark-h); width:auto; max-width:var(--wordmark-max-w); display:block; }
-    .ratings--tiers .wordmark{ height: 2.2rem; max-width: 14rem; width:auto; display:block; }
-
-    /* Hide text label next to logo on screen */
-    .team-label{ font-weight:600; line-height:1; }
-    @media screen{ .team-label{ display:none; } }
-    @media print{ :root{ --wordmark-h:3rem; } }
-
-    /* Overall Grade column (headline styling) */
-    .ratings--tiers td:first-child{
-      font-family: "Compacta","Haettenschweiler","Impact",sans-serif;
-      text-transform: uppercase; letter-spacing: .1em;
-      font-size: 1.8rem; font-weight: 700; color:#fff;
-      -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow: 0 0 0 var(--c4-primary-dark);
-    }
-
-    /* Sidebar card */
-    .rail{
-	background: #fff;
-	padding: 14px;
-	border: 2px solid var(--c4-primary-dark);
-	border-radius: 8px;
-	position: relative;
-	z-index: 1;
-	font-size: medium;
-}
-    .rail h3.rail-label{
-      margin:0 0 6px; color: var(--c4-primary-dark);
-      font: 800 clamp(14px, 1.5vw + 4px, 16px)/1 "Bernard MT Condensed";
-      letter-spacing:.08em;
-    }
-    .muted{ color:#6b7280; font-size: clamp(11px, 1.2vw + 1px, 12px); }
-    .writeup{
-    font-size: clamp(13px, 1.5vw + 1px, 14px);
-    line-height: 1.6;
-    color: #111;
-    margin: 8px 0 0;
-}
-
-    /* Sidebar header: logo + weekly segment name */
-    .rail-header{
-		display:flex;
-		align-items:center;
-		gap:0.75rem;
-		margin-bottom:0.75rem;
-	  }
-	  
-	.rail-title{
-       display:flex;
-       flex-direction:column;
-       justify-content:center;  /* centers title+subtitle as a unit */
-       line-height:1.1;
-     }
-	 
-     .segment-subtitle{
-       font-family:"Source Sans", Arial, sans-serif;
-       font-weight:700;
-       margin-top:0.125rem;
-	   color: var(--c4-primary)
-    }
-	  
-    .rail-logo{ display:block; max-width: 10rem; height:auto; }
-	  
-    .rail-header .segment-title{
-    font-family: "Source Sans", Arial, sans-serif;
-    font-weight: bolder;
-    font-size: 1.33rem;
-    letter-spacing: 0em;
-    text-transform: uppercase;
-    color: var(--c4-primary);
-    vertical-align: middle;
-    }
-
-    /* Universal logo slot — identical box for all marks */
-    .team-slot{
-    flex: 0 0 auto;
-    width: 6rem;
-    display: grid;     /* vertical center */
-    justify-items: end;      /* right align */
-    box-sizing: content-box;
-    }
-
-    /* Let the image fit inside the slot without ever cropping */
-    .team-slot .team-logo{
-      height: 100%;      /* match slot height */
-      width: auto;       /* preserve aspect ratio */
-      max-width: 100%;   /* clamp wides so they don't overflow */
-      display: block;
-    }
-
-	.r
-	  display: flow-root;	-body{
-	
-	  
-}.team-slot--square{
-    float: right;
-    width: 6rem;    /* 80px */
-    display: grid;
-    place-items: center;
-    margin: 0rem 0.5rem 0.5rem 0.75rem;
-    shape-outside: inset(0)
-    }
-	  
-    .team-slot--square .team-logo{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    text-wrap: normal;
-    }
-	  
-    @media (max-width: 26.25rem){ /* ~420px */
-      .team-slot--square{
-	    width: 4rem;
-		height: 4rem;
-		margin: 0.5rem 0.375rem 0 0}
-    }
-
-    /* Intro sign-off */
-    .intro{ position: relative; }
+    /* Intro */
+    .intro{ padding:0.75rem 1rem 1.75rem 1rem !important; }
     .signature{
-	position: absolute;
-	bottom: -0.5rem;
-	max-height: 80px;
-	height: auto;
-	right: 10%;
-	top: 17rem;
+      position:static; display:block; max-height:56px;
+      margin:0.5rem 0 0 auto;
     }
 
-    /* Layout grid */
-    .grid{ display:grid; grid-template-columns:minmax(0,65%) minmax(260px,35%); gap:1.25rem; margin-top:1.125rem; align-items:start; }
-
-    /* Mobile stack */
-    @media (max-width: 800px){
-      .grid{ grid-template-columns: 1fr; gap: 1rem; }
-      .rail-header{ align-items:flex-start; }
-      .rail-logo{ max-width: 9rem; }
+    /* Ratings table */
+    .ratings th, .ratings td{ padding:0.3rem 0.4rem; }
+    .ratings--tiers .wordmark{ height:1.6rem; max-width:10rem; }
+    /* Column widths sum to 100% on mobile */
+    .ratings--tiers th:nth-child(1), .ratings--tiers td:nth-child(1){ width:12% !important; }
+    .ratings--tiers th:nth-child(2), .ratings--tiers td:nth-child(2){ width:52% !important; text-align:left; }
+    .ratings--tiers th:nth-child(3), .ratings--tiers td:nth-child(3){ width:12% !important; }
+    .ratings--tiers th:nth-child(4), .ratings--tiers td:nth-child(4){ width:11% !important; }
+    .ratings--tiers th:nth-child(5), .ratings--tiers td:nth-child(5){ width:13% !important; }
+    .ratings--tiers td:nth-child(3),
+    .ratings--tiers td:nth-child(4),
+    .ratings--tiers td:nth-child(5){ font-size:0.85rem; }
+    .ratings--tiers td:first-child{ font-size:1rem; letter-spacing:0.06em; }
+    .ratings--tiers thead th{
+      font-size:0.75rem; line-height:1.05; white-space:nowrap; padding:0.28rem 0.35rem;
     }
 
-    /* WEEKLY FORECAST — single column, centered, 2px separators */
-    .ratings--forecast{
-      table-layout: auto;
-      border-collapse: collapse;
-    }
+    /* Weekly Forecast logos smaller on phones */
+    .ratings--forecast .wordmark{ height:1.4rem; max-width:9rem; }
 
-    .ratings--forecast th,
-    .ratings--forecast td{
-      width: auto !important;     /* neutralize widths from other tables */
-      text-align: center;
-    }
+    /* Keep ticker looping; avoid sideways scroll */
+    html, body{ overflow-x:hidden; }
+  }
 
-    /* 2px row lines */
-    .ratings--forecast tbody tr:first-child td{ border-top: 0; }
-    .ratings--forecast tbody tr + tr td{ border-top: 0.125rem solid #e6e8ef; } /* ~2px */
-
-    /* Center the logos + “vs” as a unit */
-    .ratings--forecast .team-cell{
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    /* LIVE pill */
-    .live-bug{
-      position:relative; z-index:3; justify-self:end; align-self:start; margin-top:0.2rem;
-      background:#d0021b; color:#fff; border-radius:999px; padding:0.375rem 0.75rem;
-      font:700 clamp(11px, 1vw + 1px, 12px)/1 system-ui, sans-serif; letter-spacing:.08em;
-      text-transform:uppercase; box-shadow:0 0 0 2px rgba(255,255,255,.15) inset;
-      animation:pulse 1.2s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%   { transform:scale(1);    box-shadow:0 0 0 rgba(255,0,0,0.5); }
-      50%  { transform:scale(1.08); box-shadow:0 0 24px rgba(255,0,0,0.45); }
-      100% { transform:scale(1);    box-shadow:0 0 0 rgba(255,0,0,0.5); }
-    }
-
-    /* Chyron ticker */
-    .ticker{
-      position: sticky; bottom: 0; left: 0; right: 0; height: 2rem;
-      background: var(--c4-primary-dark); color: #fff; border-top: 0.1875rem solid var(--c4-secondary);
-      overflow: hidden; display: grid; align-items: center;
-      font: 600 clamp(11px, 0.9vw + 1px, 12px)/1.1 system-ui, sans-serif; z-index: 100;
-    }
-    .ticker-inner{ display:flex; width:max-content; will-change: transform; animation: ticker 28s linear infinite; }
-    .ticker-track{ display:flex; white-space: nowrap; flex: 0 0 auto; min-width: 100vw; }
-    .ticker-track span{ display:inline-block; padding: 0 1.5rem; letter-spacing: .02em; text-transform: uppercase; }
-    @keyframes ticker{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
-    .is-archived .ticker{ display:none; }
-    @media print{ .ticker{ display:none; } }
-  .segment-subtitle {
-    font-style: normal;
-}
-  </style>
+  /* EXTRA NARROW (≤420px) — smaller square badge */
+  @media (max-width:420px){
+    .team-slot--square{ width:4rem; height:4rem; margin:0.5rem 0.75rem 0.75rem 1rem; }
+  }
+</style>
 </head>
 <body>
   <div class="page">
@@ -591,7 +505,7 @@ url("fonts/SourceSansPro-Bold.ttf.woff") format("woff");
           <h2 class="section-title">WEEKLY FORECAST</h2>
         </div>
 
-        <div class="grid">
+        <div class="grid grid--forecast">
           <!-- LEFT: matchups table -->
           <section class="section">
             <div class="block">
@@ -671,4 +585,3 @@ url("fonts/SourceSansPro-Bold.ttf.woff") format("woff");
   </div>
 </body>
 </html>
-
