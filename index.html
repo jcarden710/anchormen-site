@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AnchorMEN UPDATE — Week 1 2025</title>
+  <style>
+  :root{
+    --c4-primary: rgb(50,48,146);
+    --c4-primary-dark: rgb(35,33,110);
+    --c4-secondary: rgb(254,231,0);
+    --ink:#111; --muted:#6b7280; --bg:#fff;
+    --rail-bg:#f5f7fb; --rule: rgba(17,17,17,.12);
+    --masthead-h:7rem;
+    --mastimg-pad:0.375rem;
+    --page-pad: 0.5in;
+    --wordmark-h:3rem; 
+    --wordmark-max-w:13.75rem;
+  }
+
+  /* Fonts */
+  @font-face{
+    font-family:"Compacta";
+    src:url("fonts/Compacta.woff2") format("woff2"),
+        url("fonts/Compacta.woff") format("woff");
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:"Source Sans";
+    src:url("fonts/SourceSansPro-Regular.ttf.woff2") format("woff2"),
+        url("fonts/SourceSansPro-Regular.ttf.woff") format("woff");
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:"Source Sans";
+    src:url("fonts/SourceSansPro-Bold.ttf.woff2") format("woff2"),
+        url("fonts/SourceSansPro-Bold.ttf.woff") format("woff");
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+
+  html,body{
+    margin:0; padding:0;
+    background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  /* Page & print */
+  .page{ max-width:1200px; width:100%; margin:0 auto; background:var(--bg); padding:0 var(--page-pad) var(--page-pad); box-sizing:border-box; }
+  main{ max-width:100%; margin:0; padding:0; }
+  @media print{
+    @page{ size:Letter portrait; margin:0.5in; }
+    body{ background:transparent; }
+    .page{ width:auto; margin:0; padding:0; }
+  }
+
+  /* Masthead */
+  .masthead{
+    position:relative; background:var(--c4-primary); color:#fff;
+    width:100vw; margin-left:50%; transform:translateX(-50%);
+  }
+  .masthead .content{ padding-top:1rem; padding-bottom:1.25rem; }
+
+  /* Pattern underlay */
+  .pattern{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+  .pattern svg{ width:100%; height:100%; display:block; }
+
+  /* Foreground content */
+  .content{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:auto 1fr auto;
+    gap:1rem; align-items:start;
+    padding-top:0.5rem; max-width:1200px; margin:0 auto;
+    padding-left:1rem; padding-right:1rem;
+  }
+  .mastimg{
+    height:calc(100% - (var(--mastimg-pad) * 2));
+    width:auto; display:block; object-fit:contain;
+    padding:var(--mastimg-pad) 0;
+  }
+
+  /* Title block */
+  .title-wrap{ padding:0; margin:0; border:0; border-radius:0; background:transparent; display:flex; flex-direction:column; justify-content:center; }
+  .title{
+    font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
+    font-weight:700;
+    text-transform:uppercase; letter-spacing:.02em;
+    font-size:clamp(32px, 4vw + 12px, 46px);
+    line-height:1.05; margin:0; color:#fff;
+    -webkit-text-stroke:1px var(--c4-primary-dark);
+    text-shadow:0 0 0 var(--c4-primary-dark);
+  }
+  .meta{
+    font-family:"Bernard MT Condensed","League Gothic",Impact,sans-serif;
+    font-size:clamp(24px, 1.8vw + 6px, 20px);
+    text-transform:uppercase; letter-spacing:.1rem;
+    margin-top:0.1rem; color:#fff;
+  }
+
+  /* Tapered rules under masthead */
+  .mast-rules{ width:100vw; margin-left:50%; transform:translateX(-50%); background:transparent; }
+  .mast-rules .rule{ background:var(--c4-secondary); height:0.4rem; }
+  .mast-rules .rule.mid{ margin-top:0.3125rem; height:0.2rem; }
+  .mast-rules .rule.thin{ margin-top:0.3125rem; height:0.1rem; }
+
+  /* Sections */
+  .section{ margin-top:0.625rem; }
+  .section-header{ position:relative; margin:0 0 0.5rem; padding-top:0.625rem; z-index:0; }
+  .section-header .lines{
+    position:absolute;
+    left:calc(var(--page-pad) * -1); right:calc(var(--page-pad) * -1);
+    top:calc(50% - 14px);
+    display:grid; gap:4px; z-index:-1;
+  }
+  .section-header .lines span{ display:block; height:2px; background:var(--c4-secondary); }
+  .section-title{
+    position:relative; z-index:2; display:inline-block; margin:0; padding:0 0 0 12px;
+    font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
+    font-weight:700;
+    text-transform:uppercase; letter-spacing:.02em;
+    font-size:clamp(20px, 2.2vw + 8px, 26px);
+    color:#fff; top:-11px;
+    -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow:0 0 0 var(--c4-primary-dark);
+  }
+  .section .block{ background:transparent; border:0; box-shadow:none; border-radius:0; padding:0; }
+
+  /* Ratings (base) */
+  .ratings{ border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; table-layout:fixed; }
+  .ratings th, .ratings td{ padding:0.4rem 0.5rem; vertical-align:middle; }
+  .ratings tbody tr:hover td{ background:#fafbff; }
+  .ratings thead th{
+    background:#f7f9ff;
+    border-bottom:0.1875rem solid var(--c4-primary-dark);
+    font-weight:700; font-size:clamp(12px, 1.2vw + 2px, 13px);
+    color:#2b3345; white-space:normal; line-height:1.15;
+  }
+  /* Column widths for Week table */
+  .ratings th:nth-child(1), .ratings td:nth-child(1){ text-align:center; width:7.5%; }
+  .ratings th:nth-child(2), .ratings td:nth-child(2){ text-align:left; width:40%; }
+  .ratings th:nth-child(3), .ratings td:nth-child(3),
+  .ratings th:nth-child(4), .ratings td:nth-child(4),
+  .ratings th:nth-child(5), .ratings td:nth-child(5){ text-align:center; width:12%; }
+  /* Thin row separators */
+  .ratings tbody tr + tr td{ border-top:0.0625rem solid var(--rule); }
+
+  /* Draft Report Card (tiers) */
+  .ratings--tiers{ border-collapse:collapse; border-spacing:0; }
+  .ratings--tiers thead th{
+    border-bottom:3px solid var(--c4-primary-dark);
+    background:#f7f9ff; font-weight:700; color:#2b3345;
+    white-space:normal; word-break:break-word; line-height:1.2; padding:0.5rem 0.5rem;
+  }
+  .ratings--tiers tbody tr + tr td{ border-top:0; }
+  .ratings--tiers tbody tr{ border-top:2px solid #e6e8ef; }
+  .ratings--tiers tbody tr:first-child{ border-top:none; }
+  .ratings--tiers th, .ratings--tiers td{ border-left:0; border-right:0; }
+  .ratings--tiers .team-cell{ display:flex; align-items:center; gap:8px; overflow-wrap:anywhere; }
+  .wordmark{ height:var(--wordmark-h); width:auto; max-width:var(--wordmark-max-w); display:block; }
+  .ratings--tiers .wordmark{ height:2.2rem; max-width:14rem; width:auto; display:block; }
+  .team-label{ font-weight:600; line-height:1; }
+  @media screen{ .team-label{ display:none; } }
+  @media print{ :root{ --wordmark-h:3rem; } }
+  .ratings--tiers td:first-child{
+    font-family:"Compacta","Haettenschweiler","Impact",sans-serif;
+    font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em;
+    font-size:1.8rem; color:#fff;
+    -webkit-text-stroke:1px var(--c4-primary-dark); text-shadow:0 0 0 var(--c4-primary-dark);
+  }
+
+  /* Sidebar card */
+  .rail{
+    background:#fff; padding:14px; border:2px solid var(--c4-primary-dark);
+    border-radius:8px; position:relative; z-index:1; font-size:medium;
+  }
+  .rail h3.rail-label{
+    margin:0 0 6px; color:var(--c4-primary-dark);
+    font:800 clamp(14px, 1.5vw + 4px, 16px)/1 "Bernard MT Condensed";
+    letter-spacing:.08em;
+  }
+  .muted{ color:#6b7280; font-size:clamp(11px, 1.2vw + 1px, 12px); }
+  .writeup{ font-size:clamp(13px, 1.5vw + 1px, 14px); line-height:1.6; color:#111; margin:8px 0 0; }
+
+  /* Sidebar header */
+  .rail-header{ display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem; }
+  .rail-title{ display:flex; flex-direction:column; justify-content:center; line-height:1.1; }
+  .segment-subtitle{
+    font-family:"Source Sans", Arial, sans-serif;
+    font-weight:700; margin-top:0.125rem; color:var(--c4-primary); font-style:normal;
+  }
+  .rail-logo{ display:block; max-width:10rem; height:auto; }
+  .rail-header .segment-title{
+    font-family:"Source Sans", Arial, sans-serif; font-weight:bolder;
+    font-size:1.33rem; letter-spacing:0; text-transform:uppercase; color:var(--c4-primary);
+    vertical-align:middle;
+  }
+
+  /* Sidebar: logo slot (fix wrapping + breathing room) */
+  .rail-body{ display:flow-root; } /* contain float */
+  .team-slot{ flex:0 0 auto; width:6rem; display:grid; justify-items:end; box-sizing:content-box; }
+  .team-slot .team-logo{ height:100%; width:auto; max-width:100%; display:block; }
+  .team-slot--square{
+    float:right; width:6rem; height:6rem;
+    display:block; /* simpler, more reliable float box */
+    /* extra breathing room for the paragraph to wrap */
+    margin:0 1rem 1rem 1.25rem; /* top right bottom left */
+  }
+  .team-slot--square .team-logo{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+  /* Intro sign-off */
+  .intro{ position:relative; }
+  .signature{
+    position: absolute;
+    right: 10%;
+    top: 15rem;
+    bottom: -0.5rem;
+    max-height: 80px;
+    height: auto;
+  }
+
+  /* Layout grid */
+  .grid{ display:grid; grid-template-columns:minmax(0,65%) minmax(260px,35%); gap:1.25rem; margin-top:1.125rem; align-items:start; }
+  @media (max-width:800px){
+    .grid{ grid-template-columns:1fr; gap:1rem; }
+    .rail-header{ align-items:flex-start; }
+    .rail-logo{ max-width:9rem; }
+  }
+  .grid--forecast{ grid-template-columns:minmax(0,1fr) 320px; align-items:start; }
+  @media (max-width:800px){ .grid--forecast{ grid-template-columns:1fr; } }
+
+  /* WEEKLY FORECAST — single column, centered, 2px separators */
+  .ratings--forecast{ table-layout:auto; border-collapse:collapse; }
+  .ratings--forecast th, .ratings--forecast td{ width:auto !important; text-align:center; white-space:nowrap; }
+  .ratings--forecast tbody tr:first-child td{ border-top:0; }
+  .ratings--forecast tbody tr + tr td{ border-top:0.125rem solid #e6e8ef; }
+  .ratings--forecast .team-cell{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:0.5rem; }
+  .ratings--forecast .team-cell img:first-of-type{ justify-self:end; } 
+  .ratings--forecast .team-cell img:last-of-type{  justify-self:start; }
+  /* desktop/tablet: bigger wordmarks (more space available) */
+  .ratings--forecast .wordmark{ height:2.8rem; max-width:16rem; }
+
+  /* LIVE pill */
+  .live-bug{
+    position:relative; z-index:3; justify-self:end; align-self:start; margin-top:0.2rem;
+    background:#d0021b; color:#fff; border-radius:999px; padding:0.375rem 0.75rem;
+    font:700 clamp(11px, 1vw + 1px, 12px)/1 system-ui, sans-serif; letter-spacing:.08em; text-transform:uppercase;
+    box-shadow:0 0 0 2px rgba(255,255,255,.15) inset; animation:pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%{ transform:scale(1); box-shadow:0 0 0 rgba(255,0,0,0.5); }
+    50%{ transform:scale(1.08); box-shadow:0 0 24px rgba(255,0,0,0.45); }
+    100%{ transform:scale(1); box-shadow:0 0 0 rgba(255,0,0,0.5); }
+  }
+
+  /* Chyron ticker */
+  .ticker{
+    position:sticky; bottom:0; left:0; right:0; height:2rem;
+    background:var(--c4-primary-dark); color:#fff; border-top:0.1875rem solid var(--c4-secondary);
+    overflow:hidden; display:grid; align-items:center;
+    font:600 clamp(11px, 0.9vw + 1px, 12px)/1.1 system-ui, sans-serif; z-index:100;
+  }
+  .ticker-inner{ display:flex; width:max-content; will-change:transform; animation:ticker 28s linear infinite; }
+  .ticker-track{ display:flex; white-space:nowrap; flex:0 0 auto; min-width:100vw; }
+  .ticker-track span{ display:inline-block; padding:0 1.5rem; letter-spacing:.02em; text-transform:uppercase; }
+  @keyframes ticker{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .is-archived .ticker{ display:none; }
+  @media print{ .ticker{ display:none; } }
+
+  /* MOBILE CONSOLIDATED (≤600px) */
+  @media (max-width:600px){
+    :root{ --page-pad:0.75rem; }
+
+    /* Masthead */
+    .content{
+      grid-template-columns:auto 1fr;
+      gap:0.5rem; align-items:center;
+      padding-left:0.75rem; padding-right:0.75rem;
+    }
+    .mastimg{ height:40px; }
+    .title{ font-size:clamp(22px, 6.2vw, 30px); }
+    .meta{ font-size:clamp(14px, 3.6vw, 16px); letter-spacing:0.06rem; }
+    .live-bug{ grid-column:2; justify-self:end; margin-top:0; }
+
+    /* Intro */
+    .intro{ padding:0.75rem 1rem 1.75rem 1rem !important; }
+    .signature{
+      position:static; display:block; max-height:56px;
+      margin:0.5rem 0 0 auto;
+    }
+
+    /* Ratings table */
+    .ratings th, .ratings td{ padding:0.3rem 0.4rem; }
+    .ratings--tiers .wordmark{ height:1.6rem; max-width:10rem; }
+    /* Column widths sum to 100% on mobile */
+    .ratings--tiers th:nth-child(1), .ratings--tiers td:nth-child(1){ width:12% !important; }
+    .ratings--tiers th:nth-child(2), .ratings--tiers td:nth-child(2){ width:52% !important; text-align:left; }
+    .ratings--tiers th:nth-child(3), .ratings--tiers td:nth-child(3){ width:12% !important; }
+    .ratings--tiers th:nth-child(4), .ratings--tiers td:nth-child(4){ width:11% !important; }
+    .ratings--tiers th:nth-child(5), .ratings--tiers td:nth-child(5){ width:13% !important; }
+    .ratings--tiers td:nth-child(3),
+    .ratings--tiers td:nth-child(4),
+    .ratings--tiers td:nth-child(5){ font-size:0.85rem; }
+    .ratings--tiers td:first-child{ font-size:1rem; letter-spacing:0.06em; }
+    .ratings--tiers thead th{
+      font-size:0.75rem; line-height:1.05; white-space:nowrap; padding:0.28rem 0.35rem;
+    }
+
+    /* Weekly Forecast logos smaller on phones */
+    .ratings--forecast .wordmark{ height:1.4rem; max-width:9rem; }
+
+    /* Keep ticker looping; avoid sideways scroll */
+    html, body{ overflow-x:hidden; }
+  }
+
+  /* EXTRA NARROW (≤420px) — smaller square badge */
+  @media (max-width:420px){
+    .team-slot--square{ width:4rem; height:4rem; margin:0.5rem 0.75rem 0.75rem 1rem; }
+  }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="masthead">
+      <!-- Underlay pattern -->
+      <div class="pattern" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="c4tile" width="56" height="56" patternUnits="userSpaceOnUse">
+              <g transform="rotate(-18 28 28)">
+                <image href="images/channel-4-pattern.svg" x="14" y="14" width="28" height="28"/>
+              </g>
+            </pattern>
+            <pattern id="c4tileOffset" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="translate(28,28)">
+              <g transform="rotate(-18 28 28)">
+                <image href="images/channel-4-pattern.svg" x="14" y="14" width="28" height="28"/>
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#c4tile)" opacity="0.06"/>
+          <rect width="100%" height="100%" fill="url(#c4tileOffset)" opacity="0.06"/>
+        </svg>
+      </div>
+
+      <!-- Foreground content -->
+      <div class="content">
+        <img class="mastimg" src="images/channel-4-badge.svg" alt="Channel 4 badge" />
+        <div class="title-wrap">
+          <h1 class="title">AnchorMEN UPDATE</h1>
+          <div class="meta">Week 4 2025</div>
+        </div>
+        <div class="live-bug" aria-label="Live">LIVE</div>
+      </div>
+    </div>
+
+    <!-- Tapered rules -->
+    <div class="mast-rules">
+      <div class="rule"></div>
+      <div class="rule mid"></div>
+      <div class="rule thin"></div>
+    </div>
+
+    <!-- Intro -->
+    <section class="intro" style="padding:0.875rem 0.5in 4.5rem 0.5in;">
+      <p class="writeup">Week 3 of the NFL was wild, weird, and wonderful. The Detroit Lions punched the Ravens in the mouth on Monday night, storming out with a 38–30 upset that has Motor City puffing its chest. The Eagles staged a comeback worthy of prime-time television, erasing a 19-point hole with A.J. Brown shredding corners and a big man touchdown off a blocked field goal. In Minnesota, the Vikings humiliated the Bengals 48–10, thanks to Isaiah Rodgers turning defense into offense — twice.</p>
+      <p class="writeup">&nbsp;And just like that, the shake-ups echoed in our fantasy world. Metal &amp; Brawn blasted their way to the top spot with a 163-point eruption, flexing as another&nbsp; of the league’s early juggernauts. James Westfall kept the undefeated record intact at 3–0, but the air of invincibility is thinning as the score wasn't quite as sky-high. It seems Panda Watch has finally arrived, using their remodeled roster to claw past Katow-Jo and take a ratings leap, proving trades aren’t just for show. Poop Mouth suddenly found its bite, Totally Unprepared rebounded in style, and Blackbeard’s Delight kept taking on water at the bottom. The season’s picture is coming into focus: contenders on top, stragglers scrambling, and a whole lot of chaos still brewing. As always, it's anyone's year, and with no undefeated teams it feels like any could make a run.</p>
+<p class="writeup">&nbsp;</p>
+<img src="images/ron-signature.svg" alt="Ron Burgundy signature" class="signature" />
+    </section>
+
+    <main>
+      <div class="grid">
+        <!-- Draft Report Card -->
+        <section class="section">
+          <div class="section-header">
+            <div class="lines"><span></span><span></span><span></span></div>
+            <h2 class="section-title">The Ratings</h2>
+          </div>
+
+          <div class="block">
+            <table class="ratings ratings--tiers" aria-label="Pre-draft tiers">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                  <th>Record</th>
+                  <th>AGS%</th>
+                  <th>PPG</th>
+				  <th>Δ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/metal-and-brawn.svg" alt="Metal & Brawn">
+                  </td>
+                  <td>2-1</td><td>0.741</td><td>136.60</td><td>+3</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/james-westfall.svg" alt="James Westfall">
+                  </td>
+                  <td>3-0&nbsp;</td><td>0.741</td><td>138.55</td><td>-1</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/totally-unprepared.svg" alt="Totally Unprepared">
+                  </td>
+                  <td>2-1</td><td>0.630</td><td>135.15</td><td>+3</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/panda-watch.svg" alt="Panda Watch">
+                  </td>
+                  <td>1-2</td><td>0.444</td><td>118.70</td><td>+6</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/katow-jo.svg" alt="Katow-Jo">
+                  </td>
+                  <td>1-2</td><td>0.593</td><td>136.15</td><td>-3</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/ubulus-muscle.svg" alt="Ubulus Muscle">
+                  </td>
+                  <td>2-1</td><td>0.519</td><td>133.74</td><td>-3</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/tits-mcgee.svg" alt="Tits McGee">
+                  </td>
+                  <td>1-2</td><td>0.370</td><td>116.70</td><td>0</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/poop-mouth.svg" alt="Poop Mouth">
+                  </td>
+                  <td>1-2</td><td>0.333</td><td>114.28</td><td>+1</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/an-old-old-wooden-ship.svg" alt="An Old, Old Wooden Ship">
+                  </td>
+                  <td>1-2</td><td>0.444</td><td>111.54</td><td>-4</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td class="team-cell">
+                    <img class="wordmark" src="wordmarks/blackbeards-delight.svg" alt="Blackbeard's Delight">
+                  </td>
+                  <td>1-2</td><td>0.185</td><td>1107.46</td><td>-2</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="writeup grades-note"> The ratings board has turned into a roller coaster, and Week 3 did not spare anyone from the ride. Metal &amp; Brawn roared into the #1 spot after a 163-point showcase that had the rest of the league staring up in awe — a four-place climb that stamped them as the early juggernaut. James Westfall stayed steady at #2 and remains the league’s only unbeaten team, but the glow of perfection is dimming as his margins shrink week by week.</p>
+            <p class="writeup grades-note">Behind them, Panda Watch stole the spotlight, leaping six full spots after their trades finally bore fruit in an upset over Katow-Jo. That catapult came at Katow-Jo’s expense, who slid four places after a deflating loss, showing just how volatile the middle tier can be. Ubulus Muscle flexed just enough to hold position, while Poop Mouth finally found its voice, cracking 133 points and climbing back into the conversation after two weeks in the shadows.</p>
+            <p class="writeup grades-note">On the downside, Totally Unprepared managed to stop the free fall with a much-needed win, but the five-spot drop from last week still looms large. Tits McGee lurks quietly in the middle, dangerous if his spending spree yields results, and Blackbeard’s Delight remains chained to the bottom — more shipwreck than ship at this point. Three weeks in, the top dogs are separating, the stragglers are gasping, and the middle looks like a mosh pit.</p>
+<p class="writeup grades-note">&nbsp;</p>
+          </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="rail">
+          <div class="rail-header">
+            <img src="images/c4-exclusive.svg" alt="C4 Exclusive" class="rail-logo">
+            <div class="rail-title">
+              <div class="segment-title"><strong>Power Plays</strong></div>
+              <div class="segment-subtitle"><strong style="text-transform:none; font-size:1rem;">with Champ Kind</strong></div>
+            </div>
+          </div>
+			<p class="writeup" style="text-align: left"><i>Week 3 had more fireworks than a Fourth of July telecast, and three teams lit up the sky in very different ways. Let’s hit the tape.</i><br><br></p>
+	      <div class="segment-subtitle"><strong style="text-transform:none; font-size:1rem;">Metal &amp; Brawn</strong></div>
+		  <div class="rail-body">
+		    <div class="team-slot team-slot--square">
+              <img class="team-logo"
+                src="logos/metal-and-brawn.svg"
+                alt="Metal & Brawn"
+                onerror="this.remove()">
+            </div>
+			<p class="writeup" style="text-align: left">At 163.69 points, they didn’t just win, they steamrolled. Jalen Hurts and Tyreek Hill looked like a highlight package come to life, and the depth behind them was enough to make every other roster in the league sweat bullets. That’s not just a win, folks — that’s a statement.<br><br></p>
+			  
+		<div class="segment-subtitle"><strong style="text-transform:none; font-size:1rem;">Panda Watch</strong></div>
+		  <div class="rail-body">
+		    <div class="team-slot team-slot--square">
+              <img class="team-logo"
+                src="logos/panda-watch.svg"
+                alt="Panda Watch"
+                onerror="this.remove()">
+            </div>
+			<p class="writeup" style="text-align: left">You thought two straight losses and a roster shake-up spelled doom? Wrong! They came out swinging in Week 3, knocking off Katow-Jo and vaulting six places in the standings. That’s like going from the kids’ table to carving the turkey. Trades paid off, and suddenly Panda Watch isn’t just doom and gloom — they’re contenders.<br><br></p>
+          </div>
+			  
+		  <div class="segment-subtitle"><strong style="text-transform:none; font-size:1rem;">Poop Mouth</strong></div>
+		  <div class="rail-body">
+		    <div class="team-slot team-slot--square">
+              <img class="team-logo"
+                src="logos/poop-mouth.svg"
+                alt="Poop Mouth"
+                onerror="this.remove()">
+            </div>
+			<p class="writeup" style="text-align: left">The record says 1–2, but don’t be fooled. Dropping 133.31 points in a loss makes them the most dangerous underdog in town. Mahomes and Kamara finally looked like stars, and if the supporting cast keeps showing up, this is a powder keg waiting to go off. Ignore them now, regret it later.&nbsp;</p>
+          </div>
+		</div>
+        </aside>
+      </div>
+
+      <!-- Weekly Forecast -->
+      <section class="section" id="weekly-forecast">
+        <div class="section-header">
+          <div class="lines"><span></span><span></span><span></span></div>
+          <h2 class="section-title">WEEKLY FORECAST</h2>
+        </div>
+
+        <div class="grid grid--forecast">
+          <!-- LEFT: matchups table -->
+          <section class="section">
+            <div class="block">
+              <table class="ratings ratings--forecast" aria-label="Weekly Forecast">
+                <tbody>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/metal-and-brawn.svg" alt="Metal & Brawn">
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/ubulus-muscle.svg" alt="Ubulus Muscle">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/tits-mcgee.svg" alt="Tits McGee">
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/james-westfall.svg" alt="James Westfall">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/totally-unprepared.svg" alt="Totally Unprepared">
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/katow-jo.svg" alt="Katow-Jo">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/panda-watch.svg" alt="Panda Watch">
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/blackbeards-delight.svg" alt="Blackbeard's Delight">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="team-cell">
+                      <img class="wordmark" src="wordmarks/poop-mouth.svg" alt="Poop Mouth">
+                      <span style="margin:0 6px; opacity:.7;">vs</span>
+                      <img class="wordmark" src="wordmarks/an-old-old-wooden-ship.svg" alt="An Old, Old Wooden Ship">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- RIGHT: matchup of the week -->
+          <aside class="rail">
+            <h3 class="rail-label">Storm Watch with Brick Tamland</h3>
+<p class="muted" style="margin:0.25rem 0 0;"><em>Coming soon...</em></p>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Ticker -->
+  <div class="ticker" aria-label="News ticker">
+    <div class="ticker-inner">
+      <div class="ticker-track">
+        <span>WHO WILL SAVE US FROM JAMES WESTFALL'S TYRANNY?</span>
+        <span>PANDA EXTINCTION NOT QUITE GUARANTEED</span>
+        <span>RATINGS ROLLER COASTER: WILL IT STEADY?</span>
+        <span>NO TEAM REMAINS WINLESS; HEADS KEPT ON SWIVEL</span>
+        <span>QUEEN ANNE'S REVENGE MISSING IN OPEN OCEAN</span>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="ticker-track" aria-hidden="true">
+        <span>WHO WILL SAVE US FROM JAMES WESTFALL'S TYRANNY?</span>
+        <span>PANDA EXTINCTION NOT QUITE GUARANTEED</span>
+        <span>RATINGS ROLLER COASTER: WILL IT STEADY?</span>
+        <span>NO TEAM REMAINS WINLESS; HEADS KEPT ON SWIVEL</span>
+        <span>QUEEN ANNE'S REVENGE MISSING IN OPEN OCEAN</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
